@@ -5,7 +5,9 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @param {String[]} words - An array of strings.
  * @returns {string[]} An array of strings.
  */
-function sortByStringLength() {}
+function sortByStringLength(words) {
+  return words.sort((a,b) => a.length - b.length)
+}
 
 /**
  * Returns an array of the word in all scrolling positions.
@@ -14,14 +16,31 @@ function sortByStringLength() {}
  * Example: "Hello"
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
-function textScroller() {}
+function textScroller(word) {
+  const output = []
+  for (let i=0; i<word.length; i++) {
+    let initial = word.slice(i) + word.slice(0, i)
+    output.push(initial)
+  }
+  output.push(word)
+  output.shift()
+  return output
+}
 
 /**
  * Returns the difference between the largest and smallest number in the array
  * @param {Number[]} numbers - An array of numbers.
  * @returns {Number} The difference between the largest and smallest number.
  */
-function betweenExtremes() {}
+function betweenExtremes(numbers) {
+  if (!(numbers.every(num => typeof num === 'number'))) {
+    return numbers
+  }
+  
+  let largest = Math.max(...numbers)
+  let smallest = Math.min(...numbers)
+  return largest - smallest
+}
 
 /**
  * Returns the translation of English to morse code.
@@ -32,7 +51,22 @@ function betweenExtremes() {}
  * .- / -. . .-- / -- --- -. - ....
  * Hint: Check the morse-code-dictionary.json file to see what data is available.
  */
-function morseCodeTranslator() {}
+function morseCodeTranslator(message, dictionary) {
+  const words = message.split(' ');
+  const morseWords = words.map((word) => {
+    const letters = word.split('');
+    const morseLetters = letters.map((letter) => {
+      if (dictionary[letter.toUpperCase()]) {
+        return dictionary[letter.toUpperCase()];
+      } else {
+        return letter;
+      }
+    });
+    return morseLetters.join(' ');
+  });
+  return morseWords.join(' ');
+  
+}
 
 module.exports = {
   sortByStringLength,
