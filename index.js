@@ -22,7 +22,6 @@ function textScroller(word) {
   for (let i = 1; i <= word.length; i++) {
     const rotation = word.slice(i)+word.slice(0,i);
     newArr.push(rotation);
-    // console.log(rotation);
   }
 
   return newArr;
@@ -50,8 +49,6 @@ function betweenExtremes(numbers) {
     if (numbers[i] < minNum) {
       minNum = numbers[i]
     }
-    // console.log(`maxNum${maxNum}`)
-    // console.log(minNum)
   }
   return maxNum - minNum;
 }
