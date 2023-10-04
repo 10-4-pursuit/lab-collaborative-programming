@@ -60,7 +60,27 @@ function betweenExtremes(numbers) {
  * .- / -. . .-- / -- --- -. - ....
  * Hint: Check the morse-code-dictionary.json file to see what data is available.
  */
-function morseCodeTranslator() {}
+function morseCodeTranslator(message, dictionary) {
+  // uppercase every letter in the string to match with the dictionary
+  let uppercaseMessage = message.toUpperCase();
+
+  //initialize a variable to store the message translated in morse code
+  let morseCode = "";
+
+  // loops through the message, finds matches in the dictionary, and stores it in the variable morseCodeCharacter
+  for (const character of uppercaseMessage){
+    const morseCodeCharacter = Object.keys(dictionary).find(key => key === character);
+  
+  // if there is a match adds each character into the morseCode variable
+    if (morseCodeCharacter){
+      morseCode += dictionary[morseCodeCharacter] + " "
+
+  }
+}
+// return the final morse code message and trim any extra space at the end of the string
+return morseCode.trim();
+  
+}
 
 module.exports = {
   sortByStringLength,
