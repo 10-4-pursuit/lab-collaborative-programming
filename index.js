@@ -21,7 +21,35 @@ function textScroller() {}
  * @param {Number[]} numbers - An array of numbers.
  * @returns {Number} The difference between the largest and smallest number.
  */
-function betweenExtremes() {}
+function betweenExtremes(numbers) { 
+  // checks to see if the array only has numbers
+  const onlyNumbersCheck = numbers.every((element => typeof element === "number"));
+
+  //filters the array to only contain numbers
+  const onlyNumbersFilter = numbers.filter((element) => typeof element === "number") 
+
+  // stores the largest number in the array
+  const maxNumber = Math.max(...onlyNumbersFilter)
+
+  // stores the smallest number in the array
+  const minNumber = Math.min(...onlyNumbersFilter)
+
+  // stores the difference between the largest and smallest number in this array
+  const difference = maxNumber - minNumber
+
+  // return the original array if all elements are not all numbers
+  if (!onlyNumbersCheck) {
+  return numbers
+  }
+
+  // return empty array if input an empty string
+  if (numbers === " "){
+    return []
+  }
+  
+  // returns the difference
+  return difference 
+}
 
 /**
  * Returns the translation of English to morse code.
