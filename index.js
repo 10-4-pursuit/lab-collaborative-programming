@@ -5,7 +5,18 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @param {String[]} words - An array of strings.
  * @returns {string[]} An array of strings.
  */
-function sortByStringLength() {}
+function sortByStringLength(words) {
+  // Use the sort() method with a custom comparison function
+  words.sort(function(a, b) {
+  // Compare the lengths of the two words
+  return a.length - b.length;
+});
+
+return words;
+
+}
+
+
 
 /**
  * Returns an array of the word in all scrolling positions.
@@ -14,7 +25,21 @@ function sortByStringLength() {}
  * Example: "Hello"
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
-function textScroller() {}
+function textScroller(word) {
+  const result = [];
+
+  // Loop through each character position
+  for (let i = 0; i < word.length; i++) {
+  // Create a rotated version of the word
+  const rotatedWord = word.slice(i) + word.slice(0, i);
+
+  // Push the rotated word to the result array
+  result.push(rotatedWord);
+
+  }
+
+  return result;
+}
 
 /**
  * Returns the difference between the largest and smallest number in the array
