@@ -49,13 +49,13 @@ function betweenExtremes(numbers) {
  * Hint: Check the morse-code-dictionary.json file to see what data is available.
  */
 function morseCodeTranslator(message, dictionary) {
-  let morseCode = [];
+  let morseCode = "";
   let words = message.toUpperCase();
   // need to access keys on obj
 
   for (let word of words) {
     for (let letters in dictionary) {
-      if (words.includes(letters)) {
+      if (word.includes(letters)) {
         morseCode += dictionary[letters] + ` `;
     }
    }
