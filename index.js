@@ -60,11 +60,13 @@ function betweenExtremes(numbers)
  * Hint: Check the morse-code-dictionary.json file to see what data is available.
  */
 function morseCodeTranslator(message, dictionary) {
+  console.log(message)
   let translatedMessage = ""
   for(let i = 0; i < message.length; i++){
     letter = message[i].toUpperCase()
     if(dictionary[letter]){
       translatedMessage += dictionary[letter] + " "
+      console.log(translatedMessage) 
     }
   }
   return  translatedMessage.trim()
