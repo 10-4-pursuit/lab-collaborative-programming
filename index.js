@@ -31,12 +31,14 @@ function textScroller(word) {
   // Loop through each character position
   for (let i = 0; i < word.length; i++) {
   // Create a rotated version of the word
-  const rotatedWord = word.slice(i) + word.slice(0, i);
-
+  let rotatedWord = word.slice(i) + word.slice(0, i);
   // Push the rotated word to the result array
   result.push(rotatedWord);
-
   }
+
+  result.push(word)
+  result.shift()
+
 
   return result;
 }
